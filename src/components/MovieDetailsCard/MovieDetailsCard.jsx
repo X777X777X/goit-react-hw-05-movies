@@ -1,4 +1,3 @@
-import NoImage from '../../image/NoImage.svg.png';
 import {
   MovieDetailsImg,
   MovieDetailsAbout,
@@ -6,18 +5,22 @@ import {
   MovieDetailsScore,
   MovieDetailsOverview,
   MovieDetailsOverviewText,
+  MovieDetailsGenres,
+  MovieDetailsGenresText,
   MovieDetailsCard,
 } from './MovieDetailsCard.styled';
 import PropTypes from 'prop-types';
+import NoImage from '../../image/NoImage.svg.png';
 
 export const MovieCard = ({ movie }) => {
-  const { overview, title, release_date, vote_average } = movie;
+  const { overview, title, release_date, genres, vote_average } = movie;
 
   let posterPath;
-  if (movie.posterPath) {
+  if (movie.poster_path) {
     posterPath = `https://image.tmdb.org/t/p/w400/${movie.poster_path}`;
   } else {
-    posterPath = <img src={NoImage} alt="Sorry,no wiew actor" />;
+  posterPath = NoImage;
+
   }
   return (
     <MovieDetailsCard>
@@ -31,6 +34,10 @@ export const MovieCard = ({ movie }) => {
         </MovieDetailsScore>
         <MovieDetailsOverview>Overview</MovieDetailsOverview>
         <MovieDetailsOverviewText>{overview}</MovieDetailsOverviewText>
+        <MovieDetailsGenres>Genres</MovieDetailsGenres>
+        <MovieDetailsGenresText>
+          {genres.map(genre => genre.name).join(', ')}
+        </MovieDetailsGenresText>
       </MovieDetailsAbout>
     </MovieDetailsCard>
   );
@@ -43,5 +50,11 @@ MovieCard.propTypes = {
     release_date: PropTypes.string,
     vote_average: PropTypes.number,
     overview: PropTypes.string,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      })
+    ),
   }),
 };

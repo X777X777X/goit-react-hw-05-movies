@@ -1,10 +1,13 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const Layout = lazy(() => import('./Layout').then(module => ({
-  ...module, default: module.Layout,
-}))
+const Layout = lazy(() =>
+  import('./Layout').then(module => ({
+    ...module,
+    default: module.Layout,
+  }))
 );
+
 const Movies = lazy(() =>
   import('../pages/Movies/Movies').then(module => ({
     ...module,
@@ -41,7 +44,7 @@ const NotFound = lazy(() =>
     default: module.NotFound,
   }))
 );
-export const App = () => {
+ const App = () => {
   return (
     <>
       <Routes>
@@ -58,3 +61,5 @@ export const App = () => {
     </>
   );
 };
+
+export default App;
