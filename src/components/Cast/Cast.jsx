@@ -17,7 +17,7 @@ export const Cast = () => {
       .then(setActors)
       .catch(error =>
         toastr.error(
-          'Ooops, something broke. Try again please... ',
+          'Ooops, something broke. Try again please.. ',
           error.messages
         )
       )
