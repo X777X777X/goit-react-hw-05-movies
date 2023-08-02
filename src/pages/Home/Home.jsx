@@ -22,7 +22,7 @@ export const Home = () => {
         }
         setTrendings(results);
       } catch {
-        toastr.warning('Something wrong, try again please');
+        toastr.warning('Something wrong, try again');
       }
     }
     moviesFetch();
