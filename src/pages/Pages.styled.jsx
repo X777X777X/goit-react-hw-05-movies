@@ -5,10 +5,10 @@ import { Link, NavLink } from 'react-router-dom';
 export const LinkItem = styled(Link)`
   /* Стилі для посилань */
   text-decoration: none;
-  color: #333;
+  color: #444;
   font-weight: bold;
   &:hover {
-    color: #555;
+    color: #666;
   }
 `;
 
